@@ -8,3 +8,5 @@ The system should follow the basic precepts of software engineering and object o
 * Java 8 and Springboot (2.5.2) was used on the back-end.
 * Angular 12.1.1 was used on the front-end.
 * PostgreSQL and PgAdmin4 was used for data storage and manipulation.
+
+![School App Gif](https://github.com/pablo-padua/SchoolApp/blob/master/SchoolApplication.gif)
