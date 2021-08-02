@@ -1,0 +1,78 @@
+<form name="editForm" [formGroup]="schoolForm" #editForm="ngForm">
+    <fieldset class="fieldset">
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="fas fa-cog"></i></span>
+                <input type="text" pKeyFilter="int" [(ngModel)]="school.schoolCode"  maxlength="6" formControlName="schoolCode" pInputText placeholder="School Code" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="fas fa-file-signature"></i></span>
+                <input type="text" [pKeyFilter]="noSpecialNoNumber" [(ngModel)]="school.schoolName" formControlName="schoolName" pInputText placeholder="School Name" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="fas fa-user-graduate"></i></span>
+                <input type="text" pKeyFilter="int" [(ngModel)]="school.studentCount" maxlength="6" formControlName="studentCount" pInputText placeholder="Students Count" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="fas fa-chalkboard-teacher"></i></span>
+                <input type="text" pKeyFilter="int" [(ngModel)]="school.classCount" formControlName="classCount" pInputText placeholder="Classrooms Count" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="fas fa-id-card"></i></span>
+                <input type="text" pKeyFilter="int" [(ngModel)]="school.employeesCount" formControlName="employeesCount" pInputText placeholder="Employees Count" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="fas fa-at"></i></span>
+                <input type="text" pKeyFilter="email" [(ngModel)]="school.schoolEmail" formControlName="schoolEmail" pInputText placeholder="School E-mail" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="fas fa-male"></i></span>
+                <input type="text" [pKeyFilter]="noSpecialNoNumber" [(ngModel)]="school.principal" formControlName="principal" pInputText placeholder="Principal" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="fas fa-phone-square-alt"></i></span>
+                <input type="text" [pKeyFilter]="phoneRegex" [(ngModel)]="school.schoolPhoneNumber" formControlName="schoolPhoneNumber" pInputText placeholder="School Phone Number" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="fas fa-map-marked-alt"></i></span>
+                <input type="text" [pKeyFilter]="noSpecialNoNumber" [(ngModel)]="school.city" formControlName="city" pInputText placeholder="City Name" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="fas fa-map-marked-alt"></i></span>
+                <input type="text" [pKeyFilter]="noSpecialNoNumber" [(ngModel)]="school.state" formControlName="state" maxlength="4" pInputText placeholder="State/Province Name"
+                    required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="fas fa-map-marked-alt"></i></span>
+                <input type="text" [pKeyFilter]="noSpecialNoNumber" [(ngModel)]="school.country" formControlName="country" pInputText placeholder="Country Name" required>
+            </div>
+        </div>
+        <div class="botoes">
+            <button class="p-button-warning" pButton (click)="resetFields()" type="submit" icon="pi pi-undo" iconPos="left" label="Reset Fields">
+            </button>
+            <button class="p-button-secondary" pButton (click)="onSubmit()" type="submit" icon="pi pi-check" iconPos="left"
+                label="Add School">
+            </button>
+        </div>
+    </fieldset>
+</form>

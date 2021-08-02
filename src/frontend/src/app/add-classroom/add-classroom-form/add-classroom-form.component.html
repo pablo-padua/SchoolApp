@@ -1,0 +1,122 @@
+<form name="editForm" [formGroup]="classroomForm" #editForm="ngForm">
+    <fieldset class="fieldset">
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-cog"></i></span>
+                <input type="text" pKeyFilter="int" [readonly]="edit" [(ngModel)]="classroom.classCode" maxlength="6"
+                    formControlName="classCode" pInputText placeholder="Class Code" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <input type="text" [pKeyFilter]="noSpecialNoNumber" [(ngModel)]="classroom.professor"
+                    formControlName="professor" pInputText placeholder="Professor" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
+                <input type="text" pKeyFilter="int" [(ngModel)]="classroom.term" maxlength="2" formControlName="term"
+                    pInputText placeholder="Term" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-book"></i></span>
+                <input type="text" [pKeyFilter]="noSpecialNoNumber" [(ngModel)]="classroom.program"
+                    formControlName="program" pInputText placeholder="Program" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <input type="text" [pKeyFilter]="noSpecialNoNumber" [(ngModel)]="classroom.classCoordinator"
+                    formControlName="classCoordinator" pInputText placeholder="Class Coordinator" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-envelope"></i></span>
+                <input type="text" pKeyFilter="email" [(ngModel)]="classroom.email" formControlName="email" pInputText
+                    placeholder="E-mail" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-dollar"></i></span>
+                <input type="text" pKeyFilter="num" [(ngModel)]="classroom.tuitionFee" maxlength="6"
+                    formControlName="tuitionFee" pInputText placeholder="Tuition Fee" required>
+                <span class="p-inputgroup-addon">.00</span>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-calendar"></i></span>
+                <input type="text" pKeyFilter="int" [(ngModel)]="classroom.gradYear" minLength="4"
+                    formControlName="gradYear" maxlength="4" pInputText placeholder="Graduation Year" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-clock"></i></span>
+                <input type="text" pKeyFilter="int" [(ngModel)]="classroom.breakTime" formControlName="breakTime"
+                    pInputText placeholder="Break time (minutes)" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-map-marker"></i></span>
+                <input type="text" [pKeyFilter]="noSpecialNoNumber" [(ngModel)]="classroom.cityName"
+                    formControlName="cityName" pInputText placeholder="City Name" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-user-plus"></i></span>
+                <input type="text" pKeyFilter="int" [(ngModel)]="classroom.availableSeats" maxlength="6"
+                    formControlName="availableSeats" pInputText placeholder="Available Seats" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-calendar"></i></span>
+                <input type="text" pKeyFilter="int" [(ngModel)]="classroom.entranceYear" minLength="4"
+                    formControlName="entranceYear" maxlength="4" pInputText placeholder="Entrance Year" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-chart-bar"></i></span>
+                <input type="text" pKeyFilter="num" [(ngModel)]="classroom.entranceMinGrade" maxlength="6"
+                    formControlName="entranceMinGrade" pInputText placeholder="Minimum Grade for Admission" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
+                <input type="text" pKeyFilter="num" [(ngModel)]="classroom.studentsCount" maxLength="6"
+                    formControlName="studentsCount" pInputText placeholder="Students Count" required>
+            </div>
+        </div>
+        <div class="p-col-12 p-md-4">
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">School</span>
+                <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
+                <select class="schools" name="schools" [(ngModel)]="classroom.school" formControlName="school"
+                    id="schools">
+                    <option disabled="disabled" selected="true">Select the school:</option>
+                    <option *ngFor="let s of schoolList" [ngValue]="s.schoolCode">{{s.schoolName}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="botoes">
+            <button class="p-button-warning" pButton (click)="resetFields()" type="submit" icon="pi pi-undo"
+                iconPos="left" label="Reset fields">
+            </button>
+            <button class="p-button-secondary" pButton (click)="onSubmit()" type="submit" icon="pi pi-check"
+                iconPos="left" label="Add classroom">
+            </button>
+        </div>
+    </fieldset>
+</form>

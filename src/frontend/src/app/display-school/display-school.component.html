@@ -1,0 +1,45 @@
+<div class="ui-g ui-fluid">
+    <div class="ui-g-12">
+        <p-header>
+            <h1>{{title}}</h1>
+        </p-header>
+        <div class="card card-w-title">
+            <div class="ui-g">
+                <div class="card">
+                    <p-table [value]="school">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>School Code</th>
+                                <th>School Name</th>
+                                <th>Classrooms #</th>
+                                <th>Employees #</th>
+                                <th>City</th>
+                                <th>Country</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-school>
+                            <tr>
+                                <td>{{school.schoolCode}}</td>
+                                <td>{{school.schoolName}}</td>
+                                <td>{{school.classCount}}</td>
+                                <td>{{school.employeesCount}}</td>
+                                <td>{{school.city}}</td>
+                                <td>{{school.country}}</td>
+                                <td>
+                                    <button type="button" pButton pRipple  icon="fas fa-edit"
+                                        label="Edit" iconPos="right" (click)="editSchool(school)"></button>
+                                </td>
+                                <td>
+                                    <button type="button" pButton pRipple iconPos="right" icon="fas fa-trash-alt"
+                                        class="p-button-danger" label="Delete"(click)="deleteSchool(school)"></button>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

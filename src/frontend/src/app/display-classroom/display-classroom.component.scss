@@ -1,0 +1,20 @@
+.ui-fluid { 
+    margin-top: 0px;
+}
+
+h1 {
+    font-weight: bolder;
+    padding-left: 10px;
+}
+
+@media screen and (max-width: 575px) {
+    .ui-fluid {
+        text-align: center;
+        padding-left: 0px;
+    }
+    h1{
+        padding-left: 0;
+        left: 0;
+        text-align: center;
+    }
+}

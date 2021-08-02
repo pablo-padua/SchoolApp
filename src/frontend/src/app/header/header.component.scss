@@ -1,0 +1,121 @@
+.toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: rgb(20, 20, 20);
+    color: white;
+    font-weight: 600;
+    margin-bottom: 200px;
+}
+
+.spacer {
+    flex: 1;
+}
+  
+.toolbar img {
+    margin: 0 16px;
+}
+  
+.toolbar #youtube-logo {
+    height: 40px;
+    margin: 0 16px;
+}
+  
+.toolbar #youtube-logo:hover {
+    opacity: 0.4;
+}
+
+.container{
+    text-align: center;
+    color: black;
+    background-color: #69D2E7;
+    width: 100%;
+    display: flex;
+    position: relative;
+    height: 50px;
+    margin-top: 80px;
+    border-bottom: 1px solid white;
+
+}
+
+.sidebar {
+    border: none;
+    display: none;
+    background: none;
+    color: white;
+    margin-right: 10px;
+}
+
+a:hover{
+    opacity: 0.7;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ul {
+    width: 100%;
+}
+
+header{
+    height: 180px;
+}
+
+li {
+    padding-right: 100px;
+    column-gap: 100px;
+    align-items: center;
+    justify-content: center;
+    display: inline;
+    bottom: 0;
+    margin-right: 15px;
+    text-align: center;
+}
+
+header::after {
+    transform: scale(0);
+    position: absolute;
+
+}
+
+@media screen and (min-width:300px) and (max-width: 768px) {
+
+    .container{ //Caso for Mobile, tratar o li de acordo
+        display: flex;
+        flex-direction: column;
+        transform: scale(0);
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        height: 85px;
+    }
+    .sidebar{
+        display: flex;
+    }
+    
+
+}
+
+@media screen and (min-width: 669px) and (max-width: 1300px) {
+
+    li {
+        padding-right: 80px; //Caso for Ipad, diminuir o padding do li para não quebrar
+    }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+    li {
+        padding-right: 20px; //Caso for Ipad em modo vertical, diminuir o padding do li para não quebrar
+    }
+
+}
