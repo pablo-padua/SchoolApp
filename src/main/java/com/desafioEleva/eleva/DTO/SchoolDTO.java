@@ -23,5 +23,4 @@ public class SchoolDTO {
     String schoolEmail;
     String principal;
 
-
 }
