@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Classroom } from 'src/app/models/classroom.model';
 import { School } from 'src/app/models/school.model';
@@ -11,8 +11,6 @@ import { SchoolService } from 'src/app/services/school.service';
   styleUrls: ['./add-classroom-form.component.scss']
 })
 export class AddClassroomFormComponent implements OnInit {
-
-  edit: boolean = false;
 
   classroom: Classroom = new Classroom();
 

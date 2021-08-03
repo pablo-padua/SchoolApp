@@ -22,27 +22,18 @@ export class DisplayClassroomComponent implements OnInit {
     this.classroomService.getClassroomList().subscribe(classroomArray => {
       this.classroom = classroomArray;
     });
-    this.checkThings();
   }
-
-  checkThings() {
-    for (var classs of this.classroom) {
-      console.log("a");
-      console.log(classs);
-    }
-  }
-
-  buttonEdit() {
-
-  }
-
+  
   editClassroom(classroom: Classroom) {
     this.router.navigateByUrl('/edit-classroom', { state: classroom });
   }
 
   deleteClassroom(classroom: Classroom) {
-    if (confirm(`Are you sure you want to delete the classroom with Class Code: ${classroom.classCode}`))
-      alert("a");
+    if (confirm(`Are you sure you want to delete the classroom with Class Code: ${classroom.classCode}`)) {
+      this.classroomService.deleteClassroom(classroom.classCode).subscribe();
+      window.location.reload();
+    } else
+      alert("Unsucessful action!")
   }
 
 }

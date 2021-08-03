@@ -36,7 +36,6 @@ import { DisplaySchoolComponent } from './display-school/display-school.componen
     DisplayClassroomComponent,
     EditClassroomComponent,
     DisplaySchoolComponent,
-
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AddClassroomFormComponent } from '../add-classroom/add-classroom-form/add-classroom-form.component';
+import { Router } from '@angular/router';
 import { Classroom } from '../models/classroom.model';
+import { School } from '../models/school.model';
+import { ClassroomService } from '../services/classroom.service';
+import { SchoolService } from '../services/school.service';
 
 @Component({
   selector: 'app-edit-classroom',
@@ -11,58 +13,54 @@ import { Classroom } from '../models/classroom.model';
 })
 export class EditClassroomComponent implements OnInit {
 
-  @ViewChild(AddClassroomFormComponent) classFormComponent!: AddClassroomFormComponent;
   title: string = "Edit Classroom Registry";
   editingClassroom: Classroom = new Classroom();
-  editForm: FormGroup = this.form.group({
-    classCode: this.editingClassroom.classCode,
-    professor: [this.editingClassroom.professor, Validators.required],
-    term: [this.editingClassroom.term, Validators.required],
-    program: [this.editingClassroom.program, Validators.required],
-    classCoordinator: [this.editingClassroom.classCoordinator, Validators.required],
-    email: [this.editingClassroom.email, Validators.required],
-    tuitionFee: [this.editingClassroom.tuitionFee, Validators.required],
-    gradYear: [this.editingClassroom.gradYear, Validators.required],
-    breakTime: [this.editingClassroom.breakTime, Validators.required],
-    cityName: [this.editingClassroom.cityName, Validators.required],
-    availableSeats: [this.editingClassroom.availableSeats, Validators.required],
-    entranceYear: [this.editingClassroom.entranceYear, Validators.required],
-    entranceMinGrade: [this.editingClassroom.entranceMinGrade, Validators.required],
-    studentsCount: [this.editingClassroom.studentsCount, Validators.required],
-    school: [this.editingClassroom.school, Validators.required]
+
+  noSpecialNoNumber: RegExp = /^[A-Za-z ]+$/
+  situacao = [{ value: "SIM" }, { value: "NAO" }];
+  schoolList: School[] = [];
+
+  editingClassroomForm: FormGroup = this.form.group({
+    classCode: ['',Validators.required],
+    professor: ['', Validators.required],
+    term: ['', Validators.required],
+    program: ['', Validators.required],
+    classCoordinator: ['', Validators.required],
+    email: ['', Validators.required],
+    tuitionFee: ['', Validators.required],
+    gradYear: ['', Validators.required],
+    breakTime: ['', Validators.required],
+    cityName: ['', Validators.required],
+    availableSeats: ['', Validators.required],
+    entranceYear: ['', Validators.required],
+    entranceMinGrade: ['', Validators.required],
+    studentsCount: ['', Validators.required],
+    school: ['', Validators.required]
   })
 
   constructor(private form: FormBuilder,
-    private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private classroomService: ClassroomService,
+    private schoolService: SchoolService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.editingClassroom = history.state;
-    // this.classFormComponent.classroomForm.setValue(this.editForm);
-    // this.classFormComponent.classroomForm.setValue(this.editForm);
-    console.log(this.editingClassroom);
-    console.log(this.editingClassroom.classCode);
-
+    if (this.editingClassroom.classCode === undefined)
+      this.router.navigateByUrl('/display-classroom');
+    this.schoolService.getSchoolList().subscribe(school => {
+      this.schoolList = school;
+    })
   }
 
-  fillForm() {
-    this.classFormComponent.classroomForm.setValue({
-      classCode: this.editingClassroom.classCode,
-      professor: [this.editingClassroom.professor, Validators.required],
-      term: [this.editingClassroom.term, Validators.required],
-      program: [this.editingClassroom.program, Validators.required],
-      classCoordinator: [this.editingClassroom.classCoordinator, Validators.required],
-      email: [this.editingClassroom.email, Validators.required],
-      tuitionFee: [this.editingClassroom.tuitionFee, Validators.required],
-      gradYear: [this.editingClassroom.gradYear, Validators.required],
-      breakTime: [this.editingClassroom.breakTime, Validators.required],
-      cityName: [this.editingClassroom.cityName, Validators.required],
-      availableSeats: [this.editingClassroom.availableSeats, Validators.required],
-      entranceYear: [this.editingClassroom.entranceYear, Validators.required],
-      entranceMinGrade: [this.editingClassroom.entranceMinGrade, Validators.required],
-      studentsCount: [this.editingClassroom.studentsCount, Validators.required],
-      school: [this.editingClassroom.school, Validators.required]
-    });
+  resetFields() {
+    this.editingClassroomForm.reset();
+  }
+
+  onSubmit() {
+    if (this.editingClassroomForm.valid)
+      this.classroomService.updateClassroom(this.editingClassroom).subscribe((success) => { this.editingClassroomForm.reset(), alert("Classroom Registry Edited");});
+    else
+      alert("Please fill out the entire form!")
   }
 
 }
