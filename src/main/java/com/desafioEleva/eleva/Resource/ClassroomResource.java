@@ -5,9 +5,13 @@ import com.desafioEleva.eleva.Entity.Classroom;
 import com.desafioEleva.eleva.Service.ClassroomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -33,6 +37,18 @@ public class ClassroomResource {
     @GetMapping("/get-classroom-list")
     public List<Classroom> getClassroomList() {
         return classroomService.getClassroomList();
+    }
+
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @PutMapping("update-classroom")
+    public Classroom updateClassroom(@RequestBody ClassroomDTO classroomDTO) {
+        return classroomService.updateClassroom(classroomDTO);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("delete-classroom/{classCode}")
+    public ResponseEntity<String> deleteClassroom(@PathVariable Long classCode) {
+        return new ResponseEntity<>(classroomService.deleteClassroom(classCode), HttpStatus.OK);
     }
 
 }

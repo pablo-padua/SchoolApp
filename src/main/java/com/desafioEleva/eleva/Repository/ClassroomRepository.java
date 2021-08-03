@@ -6,4 +6,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClassroomRepository extends JpaRepository<Classroom, Long> {
+
+    Boolean existsByClassCode(Long classCode);
+
+    Classroom findByClassCode(Long classCode);
+
+    void deleteByClassCode(Long classCode);
+
 }

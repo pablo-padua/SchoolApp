@@ -21,7 +21,7 @@ export class EditClassroomComponent implements OnInit {
   schoolList: School[] = [];
 
   editingClassroomForm: FormGroup = this.form.group({
-    classCode: ['',Validators.required],
+    classCode: ['', Validators.required],
     professor: ['', Validators.required],
     term: ['', Validators.required],
     program: ['', Validators.required],
@@ -58,7 +58,7 @@ export class EditClassroomComponent implements OnInit {
 
   onSubmit() {
     if (this.editingClassroomForm.valid)
-      this.classroomService.updateClassroom(this.editingClassroom).subscribe((success) => { this.editingClassroomForm.reset(), alert("Classroom Registry Edited");});
+      this.classroomService.updateClassroom(this.editingClassroom).subscribe((success) => { this.editingClassroomForm.reset(), alert("Classroom Registry Edited"); });
     else
       alert("Please fill out the entire form!")
   }

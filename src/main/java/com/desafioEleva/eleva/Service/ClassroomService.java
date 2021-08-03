@@ -13,4 +13,8 @@ public interface ClassroomService {
 
     List<Classroom> getClassroomList();
 
+    Classroom updateClassroom(ClassroomDTO classroomDTO);
+
+    String deleteClassroom(Long classCode);
+
 }

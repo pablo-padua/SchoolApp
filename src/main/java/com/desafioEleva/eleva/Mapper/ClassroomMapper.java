@@ -15,5 +15,6 @@ public interface ClassroomMapper {
     @Mapping(source="school.schoolCode", target = "school")
     ClassroomDTO toDTO(Classroom classroom);
 
+    Classroom fromClassToClass(Classroom classroom);
 
 }
