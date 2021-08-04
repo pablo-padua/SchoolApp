@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -31,8 +32,13 @@ public class SchoolResource {
 
     @ResponseStatus(HttpStatus.ACCEPTED)
     @GetMapping("/get-schools-list")
-    public List<School> getSchools(){
+    public List<School> getSchools() {
         return schoolService.getSchools();
+    }
+
+    @PutMapping("/edit-school")
+    public School editSchool(@RequestBody SchoolDTO schoolDTO){
+        return schoolService.editSchool(schoolDTO);
     }
 
 }

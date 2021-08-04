@@ -33,19 +33,16 @@ public class ClassroomResource {
         return classroomService.addClassroom(classroomDTO);
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)
     @GetMapping("/get-classroom-list")
     public List<Classroom> getClassroomList() {
         return classroomService.getClassroomList();
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("update-classroom")
     public Classroom updateClassroom(@RequestBody ClassroomDTO classroomDTO) {
         return classroomService.updateClassroom(classroomDTO);
     }
 
-    @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("delete-classroom/{classCode}")
     public ResponseEntity<String> deleteClassroom(@PathVariable Long classCode) {
         return new ResponseEntity<>(classroomService.deleteClassroom(classCode), HttpStatus.OK);

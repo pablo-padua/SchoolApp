@@ -8,7 +8,7 @@
                         <div class="p-col-12 p-md-4">
                             <div class="p-inputgroup">
                                 <span class="p-inputgroup-addon"><i class="pi pi-cog"></i></span>
-                                <input type="text" pKeyFilter="int" [(ngModel)]="editingClassroom.classCode" maxlength="6"
+                                <input type="text" pKeyFilter="int" [disabled]="true" [(ngModel)]="editingClassroom.classCode" maxlength="6"
                                     formControlName="classCode" pInputText placeholder="Class Code" required>
                             </div>
                         </div>
@@ -108,9 +108,9 @@
                             <div class="p-inputgroup">
                                 <span class="p-inputgroup-addon">School</span>
                                 <span class="p-inputgroup-addon"><i class="pi pi-id-card"></i></span>
-                                <select class="schools" name="schools" [(ngModel)]="editingClassroom.school" formControlName="school"
+                                <select class="schools" name="schools" placeholder="Select the school name" [(ngModel)]="editingClassroom.school" formControlName="school"
                                     id="schools">
-                                    <option disabled="disabled" selected="true">Select the school:</option>
+                                    <option value="" disabled="disabled" selected="true">Select the school:</option>
                                     <option *ngFor="let s of schoolList" [ngValue]="s.schoolCode">{{s.schoolName}}</option>
                                 </select>
                             </div>

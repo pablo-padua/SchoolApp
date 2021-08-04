@@ -26,8 +26,27 @@ public class SchoolServiceImpl implements SchoolService {
     }
 
     @Override
-    public List<School> getSchools(){
+    public List<School> getSchools() {
         return schoolRepository.findAll();
+    }
+
+    @Override
+    public School editSchool(SchoolDTO schoolDTO) {
+        if (schoolRepository.existsBySchoolCode(schoolDTO.getSchoolCode())) {
+            School school = schoolRepository.findBySchoolCode(schoolDTO.getSchoolCode()).orElse(null);
+            School editedSchool = schoolMapper.toEntity(schoolDTO);
+            if (!(school == null)) {
+                throw new BadRequestAlertException()
+            }
+            school = schoolMapper.fromSchoolToSchool(editedSchool, school);
+            return schoolRepository.save(school);
+        } else
+            return null;
+    }
+
+    @Override
+    public String deleteSchool(SchoolDTO schoolDTO) {
+        return null;
     }
 
 }

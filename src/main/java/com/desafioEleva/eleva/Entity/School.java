@@ -1,5 +1,6 @@
 package com.desafioEleva.eleva.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -59,7 +61,8 @@ public class School {
     @Column(name = "PRINCIPAL", nullable = false)
     private String principal;
 
-    @OneToMany(mappedBy = "classCode")
+    @JsonBackReference
+    @OneToMany(mappedBy = "classCode", fetch = FetchType.LAZY)
     private Set<Classroom> classroom;
 
     public void addClassroom(Classroom classroom) {

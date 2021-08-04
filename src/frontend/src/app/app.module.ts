@@ -22,6 +22,7 @@ import { SchoolFormComponent } from './add-school/school-form/school-form.compon
 import { DisplayClassroomComponent } from './display-classroom/display-classroom.component';
 import { EditClassroomComponent } from './edit-classroom/edit-classroom.component';
 import { DisplaySchoolComponent } from './display-school/display-school.component';
+import { EditSchoolComponent } from './edit-school/edit-school.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { DisplaySchoolComponent } from './display-school/display-school.componen
     DisplayClassroomComponent,
     EditClassroomComponent,
     DisplaySchoolComponent,
+    EditSchoolComponent,
   ],
   imports: [
     BrowserModule,

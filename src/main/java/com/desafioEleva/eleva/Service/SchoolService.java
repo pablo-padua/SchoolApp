@@ -13,4 +13,8 @@ public interface SchoolService {
 
     List<School> getSchools();
 
+    School editSchool(SchoolDTO schoolDTO);
+
+    String deleteSchool(SchoolDTO schoolDTO);
+
 }

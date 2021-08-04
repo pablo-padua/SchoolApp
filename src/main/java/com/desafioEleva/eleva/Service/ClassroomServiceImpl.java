@@ -50,16 +50,16 @@ public class ClassroomServiceImpl implements ClassroomService {
     @Override
     public Classroom updateClassroom(ClassroomDTO classroomDTO) {
         if (classroomRepository.existsByClassCode(classroomDTO.getClassCode())) {
-            Classroom editedClassroom = classroomMapper.toEntity(classroomDTO);
-            Classroom classroom = classroomRepository.findByClassCode(editedClassroom.getClassCode());
-            editedClassroom.setId(classroom.getId());
-            School school = schoolRepository.findBySchoolCode(editedClassroom.getSchool().getSchoolCode()).orElse(null);
+            Classroom classroom = classroomRepository.findByClassCode(classroomDTO.getClassCode());
+            School school = schoolRepository.findBySchoolCode(classroomDTO.getSchool()).orElse(null);
             if (!(school == null)) {
-                school.addClassroom(editedClassroom);
-                editedClassroom.setSchool(school);
+                Classroom editedClassroom = classroomMapper.toEntity(classroomDTO);
+                classroom = classroomMapper.fromClassToClass(editedClassroom, classroom);
+                school.addClassroom(classroom);
+                classroom.setSchool(school);
                 schoolRepository.save(school);
             }
-            return classroomRepository.save(editedClassroom);
+            return classroomRepository.save(classroom);
         } else
             return null;
     }
