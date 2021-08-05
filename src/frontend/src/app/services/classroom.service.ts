@@ -19,13 +19,13 @@ export class ClassroomService {
     return this.http.get<Classroom[]>(`${apiUrl}/get-classroom-list`);
   }
 
-  deleteClassroom(classCode : number) {
-    return this.http.delete<String>(`${apiUrl}/delete-classroom/${classCode}`);
-  }
-
-  updateClassroom(classroom : Classroom) {
+  updateClassroom(classroom: Classroom) {
     console.log(classroom);
     return this.http.put<Classroom>(`${apiUrl}/update-classroom`, classroom);
+  }
+
+  deleteClassroom(classCode: number) {
+    return this.http.delete<String>(`${apiUrl}/delete-classroom/${classCode}`);
   }
 
 }

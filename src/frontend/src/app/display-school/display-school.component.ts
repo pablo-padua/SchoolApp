@@ -20,18 +20,6 @@ export class DisplaySchoolComponent implements OnInit {
     this.schoolService.getSchoolList().subscribe(schoolArray => {
       this.school = schoolArray;
     });
-    this.checkThings();
-  }
-
-  checkThings() {
-    for (var classs of this.school) {
-      console.log("a");
-      console.log(classs);
-    }
-  }
-
-  buttonEdit() {
-
   }
 
   editSchool(school: School) {
@@ -39,8 +27,11 @@ export class DisplaySchoolComponent implements OnInit {
   }
 
   deleteSchool(school: School) {
-    if (confirm(`Are you sure you want to delete the school with Class Code: ${school.schoolCode}`))
-      alert("a");
+    if (confirm(`Are you sure you want to delete the school with Class Code: ${school.schoolCode}`)) {
+      this.schoolService.deleteSchool(school.schoolCode).subscribe();
+      window.location.reload();
+      alert("Registry deleted!")
+    } else
+      alert("Unsucessful action!")
   }
-
 }

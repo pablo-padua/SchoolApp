@@ -8,7 +8,7 @@
                         <div class="p-col-12 p-md-4">
                             <div class="p-inputgroup">
                                 <span class="p-inputgroup-addon"><i class="pi pi-cog"></i></span>
-                                <input type="text" pKeyFilter="int" [disabled]="true" [(ngModel)]="editingClassroom.classCode" maxlength="6"
+                                <input type="text" pKeyFilter="int" [(ngModel)]="editingClassroom.classCode" maxlength="6"
                                     formControlName="classCode" pInputText placeholder="Class Code" required>
                             </div>
                         </div>
@@ -116,8 +116,8 @@
                             </div>
                         </div>
                         <div class="botoes">
-                            <button class="p-button-warning" pButton (click)="resetFields()" type="submit" icon="pi pi-undo"
-                                iconPos="left" label="Reset fields">
+                            <button class="p-button-warning" pButton (click)="quit()" type="submit" icon="pi pi-undo"
+                                iconPos="left" label="Quit">
                             </button>
                             <button class="p-button-secondary" pButton (click)="onSubmit()" type="submit" icon="pi pi-check"
                                 iconPos="left" label="Edit Classroom">

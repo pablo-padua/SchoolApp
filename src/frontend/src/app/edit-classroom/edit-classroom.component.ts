@@ -17,7 +17,6 @@ export class EditClassroomComponent implements OnInit {
   editingClassroom: Classroom = new Classroom();
 
   noSpecialNoNumber: RegExp = /^[A-Za-z ]+$/
-  situacao = [{ value: "SIM" }, { value: "NAO" }];
   schoolList: School[] = [];
 
   editingClassroomForm: FormGroup = this.form.group({
@@ -45,20 +44,20 @@ export class EditClassroomComponent implements OnInit {
 
   ngOnInit(): void {
     this.editingClassroom = history.state;
-    if (this.editingClassroom.classCode === undefined)
+    if (this.editingClassroom.classCode === undefined || this.editingClassroom.classCode === null)
       this.router.navigateByUrl('/display-classroom');
     this.schoolService.getSchoolList().subscribe(school => {
       this.schoolList = school;
     })
   }
 
-  resetFields() {
-    this.editingClassroomForm.reset();
+  quit() {
+    this.router.navigateByUrl("/display-classroom");
   }
 
   onSubmit() {
     if (this.editingClassroomForm.valid)
-      this.classroomService.updateClassroom(this.editingClassroom).subscribe((success) => { this.editingClassroomForm.reset(), alert("Classroom Registry Edited"); });
+      this.classroomService.updateClassroom(this.editingClassroom).subscribe((success) => { this.router.navigateByUrl('/display-classroom'), alert("Classroom Registry Edited"); });
     else
       alert("Please fill out the entire form!")
   }

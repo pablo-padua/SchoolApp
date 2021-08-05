@@ -16,6 +16,15 @@ export class SchoolService {
   }
 
   getSchoolList() {
-    return this.http.get<School[]>(`${apiUrl}/get-schools-list`)
+    return this.http.get<School[]>(`${apiUrl}/get-schools-list`);
   }
+
+  updateSchool(school: School){
+    return this.http.put<School>(`${apiUrl}/update-school`, school);
+  }
+
+  deleteSchool(schoolCode : number){
+    return this.http.delete<String>(`${apiUrl}/delete-school/${schoolCode}`);
+  }
+
 }

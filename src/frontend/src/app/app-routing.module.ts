@@ -7,6 +7,7 @@ import { AddSchoolComponent } from './add-school/add-school.component';
 import { DisplayClassroomComponent } from './display-classroom/display-classroom.component';
 import { EditClassroomComponent } from './edit-classroom/edit-classroom.component';
 import { DisplaySchoolComponent } from './display-school/display-school.component';
+import { EditSchoolComponent } from './edit-school/edit-school.component';
 
 const routes: Routes = [
 
@@ -16,6 +17,7 @@ const routes: Routes = [
 	{ path: 'edit-classroom', component: EditClassroomComponent },
 	{ path: 'add-school', component: AddSchoolComponent },
 	{ path: 'display-school', component: DisplaySchoolComponent },
+	{ path: 'edit-school', component: EditSchoolComponent },
 	{ path: '', redirectTo: 'add-classroom', pathMatch: 'full' },
 
 	{ path: '**', component: NotFoundComponent },

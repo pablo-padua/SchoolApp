@@ -1,0 +1,85 @@
+.p-col-12 {
+    margin-bottom: 25px;
+    padding-right: 5px;
+    display: inline-flex;
+    width: 50%;
+}
+
+.fieldset {
+    border: none;
+}
+
+.botoes{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.dropdown {
+    display: flex;
+}
+
+.schools {
+    width: 100%;
+}
+
+button {
+    margin-top: 10px;
+    margin-right: 5%;
+    width: 45%;
+}
+button:hover {
+    opacity: 0.8;
+}
+
+
+.ui-fluid { 
+    margin-top: 0px;
+}
+
+h1 {
+    font-weight: bolder;
+    padding-left: 10px;
+}
+
+@media screen and (max-width: 575px) {
+    .ui-fluid {
+        text-align: center;
+        padding-left: 0px;
+    }
+
+    h1{
+        padding-left: 0;
+        left: 0;
+        text-align: center;
+    }
+
+    .p-col-12 {
+        display: grid;
+        margin-bottom: 10px;
+        padding-left: 1%;
+        width: 99%;
+    }
+
+    button {
+        padding-left: 1%;
+        width: 99%;
+        display: flex;
+    }
+    .fieldset {
+        border: none;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
+}
+
+
+@media screen and (min-width:1024) and (max-width: 1366) {
+    
+    .p-col-12 .p-md-4{
+        display: grid;
+    }
+    
+}

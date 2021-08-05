@@ -32,6 +32,7 @@ export class DisplayClassroomComponent implements OnInit {
     if (confirm(`Are you sure you want to delete the classroom with Class Code: ${classroom.classCode}`)) {
       this.classroomService.deleteClassroom(classroom.classCode).subscribe();
       window.location.reload();
+      alert("Registry deleted!")
     } else
       alert("Unsucessful action!")
   }

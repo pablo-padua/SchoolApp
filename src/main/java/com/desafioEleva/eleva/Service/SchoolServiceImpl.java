@@ -4,10 +4,13 @@ import com.desafioEleva.eleva.DTO.SchoolDTO;
 import com.desafioEleva.eleva.Entity.School;
 import com.desafioEleva.eleva.Mapper.SchoolMapper;
 import com.desafioEleva.eleva.Repository.SchoolRepository;
+import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Transactional
 @Service
 public class SchoolServiceImpl implements SchoolService {
 
@@ -30,13 +33,14 @@ public class SchoolServiceImpl implements SchoolService {
         return schoolRepository.findAll();
     }
 
+    @SneakyThrows
     @Override
-    public School editSchool(SchoolDTO schoolDTO) {
+    public School updateSchool(SchoolDTO schoolDTO) {
         if (schoolRepository.existsBySchoolCode(schoolDTO.getSchoolCode())) {
             School school = schoolRepository.findBySchoolCode(schoolDTO.getSchoolCode()).orElse(null);
             School editedSchool = schoolMapper.toEntity(schoolDTO);
-            if (!(school == null)) {
-                throw new BadRequestAlertException()
+            if (school == null) {
+                throw new Exception("School can't be null");
             }
             school = schoolMapper.fromSchoolToSchool(editedSchool, school);
             return schoolRepository.save(school);
@@ -45,8 +49,11 @@ public class SchoolServiceImpl implements SchoolService {
     }
 
     @Override
-    public String deleteSchool(SchoolDTO schoolDTO) {
-        return null;
+    public String deleteSchool(Long classCode) {
+        if (schoolRepository.existsBySchoolCode(classCode)) {
+            schoolRepository.deleteBySchoolCode(classCode);
+            return String.format("School with School Code: %s successfully deleted!", classCode);
+        } else
+            return "Class Code Not Found";
     }
-
 }

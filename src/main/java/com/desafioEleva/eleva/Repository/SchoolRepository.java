@@ -11,5 +11,7 @@ public interface SchoolRepository extends JpaRepository<School, Long> {
 
     Optional<School> findBySchoolCode(Long schoolCode);
 
+    void deleteBySchoolCode(Long classCode);
+
     boolean existsBySchoolCode(Long schoolCode);
 }

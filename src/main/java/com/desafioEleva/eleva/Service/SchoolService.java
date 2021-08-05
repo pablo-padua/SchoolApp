@@ -13,8 +13,8 @@ public interface SchoolService {
 
     List<School> getSchools();
 
-    School editSchool(SchoolDTO schoolDTO);
+    School updateSchool(SchoolDTO schoolDTO);
 
-    String deleteSchool(SchoolDTO schoolDTO);
+    String deleteSchool(Long classCode);
 
 }

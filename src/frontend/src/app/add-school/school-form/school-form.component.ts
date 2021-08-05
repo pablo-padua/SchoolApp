@@ -33,7 +33,7 @@ export class SchoolFormComponent implements OnInit {
   noSpecialNoNumber: RegExp = /^[A-Za-z ]+$/
   phoneRegex: RegExp = /^[0-9+ ]*$/
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
   resetFields() {
