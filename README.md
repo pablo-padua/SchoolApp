@@ -9,6 +9,6 @@ The system should follow the basic precepts of software engineering and object o
 * Angular 12.1.1 was used on the front-end.
 * PostgreSQL and PgAdmin4 was used for data storage and manipulation.
 
-Watch some of its funtionality [here](https://youtu.be/IYsqGf7SpTM)
+Watch some of its functionalities [here](https://youtu.be/IYsqGf7SpTM)
 
 ![School App Gif](https://github.com/pablo-padua/SchoolApp/blob/master/SchoolApplication.gif)
