@@ -13,6 +13,7 @@ export class ClassroomService {
 
   addClassroom(classroom: Classroom): Observable<Classroom> {
     return this.http.post<Classroom>(`${apiUrl}/add-classroom`, classroom);
+    
   }
 
   getClassroomList() {
@@ -20,7 +21,6 @@ export class ClassroomService {
   }
 
   updateClassroom(classroom: Classroom) {
-    console.log(classroom);
     return this.http.put<Classroom>(`${apiUrl}/update-classroom`, classroom);
   }
 

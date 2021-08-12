@@ -31,7 +31,6 @@ public class Classroom {
 
     @Column(name = "CLASS_CODE", unique = true, nullable = false)
     @NotNull
-
     private Long classCode;
 
     @Column(name = "TERM", nullable = false)
